@@ -11,7 +11,7 @@ code {
 }
 
 .tron{
-  color: black;               /* Optional TRON-blue text color */
+  color: #0D1117;               /* Optional TRON-blue text color */
   text-shadow: 0 0 3px #00f0ff, 0 0 7px #00f0ff; /* Optional neon glow */
 }
 .tronhover{
@@ -19,6 +19,6 @@ code {
 }
 
 .tronhover:hover{
-  color: black;               /* Optional TRON-blue text color */
+  color: #0D1117;               /* Optional TRON-blue text color */
   text-shadow: 0 0 3px #00f0ff, 0 0 7px #00f0ff; /* Optional neon glow */
 }
