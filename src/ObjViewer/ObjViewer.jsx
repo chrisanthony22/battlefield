@@ -1,85 +1,124 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef, useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
-// AnimatedModel Component
-function AnimatedModel({ modelPath, onAnimationEnd }) {
+// Load & animate individual model
+function Model({ path, isActive, onEnd }) {
   const group = useRef();
-  const { scene, animations } = useGLTF(modelPath);
+  const { scene, animations } = useGLTF(path);
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    if (actions && animations.length > 0) {
-      const action = actions[animations[0].name];
-      const duration = animations[0].duration;
+    if (!isActive || !actions || animations.length === 0) return;
 
-      action.reset().play();
-      action.setLoop(THREE.LoopOnce, 1);
-      action.clampWhenFinished = true;
+    const action = actions[animations[0].name];
+    action.reset().play();
+    action.clampWhenFinished = true;
+    action.setLoop(THREE.LoopOnce, 1);
 
-      // Use animation duration to schedule the callback
-      const timeout = setTimeout(() => {
-        onAnimationEnd();
-      }, duration * 1000);
+    const duration = animations[0].duration;
 
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-  }, [actions, animations, modelPath, onAnimationEnd]);
+    const timeout = setTimeout(() => {
+      onEnd();
+    }, duration * 1000);
 
-  const isMobile = window.innerWidth <= 768;
-  const scale = isMobile ? 2.0 : 2.0;
-  const positionY = isMobile ? -1.0 : -1.0;
+    return () => {
+      action.stop();
+      clearTimeout(timeout);
+    };
+  }, [isActive, actions, animations, onEnd]);
 
-  return (
+  // Only render the model if active
+  return isActive ? (
     <primitive
       ref={group}
       object={scene}
-      scale={scale}
-      position={[0, positionY, 0]}
+      scale={2}
+      position={[0, -1, 0]}
+      dispose={null}
     />
-  );
+  ) : null;
 }
 
-// ObjViewer Component
 export default function ObjViewer() {
-  const models = [
+  const modelPaths = [
     "/model/layla.glb",
     "/model/rafaela.glb",
     "/model/alice.glb",
-    "/model/esmeralda.glb"
+    "/model/wanwan.glb",
+    "/model/freya.glb",
+    "/model/esmeralda.glb",
   ];
 
-  const [modelPath, setModelPath] = useState(models[0]);
-  const [animationKey, setAnimationKey] = useState(0); // Triggers remount
+  const [index, setIndex] = useState(0);
 
-  const onAnimationEnd = () => {
-    // Pick a new random model path (excluding the current one)
-    let newIndex;
-    do {
-      newIndex = Math.floor(Math.random() * models.length);
-    } while (models[newIndex] === modelPath);
-
-    setModelPath(models[newIndex]);
-    setAnimationKey((prevKey) => prevKey + 1);
+  const nextModel = () => {
+    setIndex((prev) => (prev + 1) % modelPaths.length);
   };
 
   return (
-    <div style={{ height: "100vh", background: "#0D1117" }}>
-      <Canvas camera={{ position: [0, 1, 6], fov: 60 }}>
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[2, 2, 5]} intensity={1} />
+    <div style={{ height: "100vh", background: "#0D1117", position: "relative" }}>
+      <Canvas camera={{ position: [0, 2, 6], fov: 60 }}>
+  <ambientLight intensity={0.7} />
+  <directionalLight position={[2, 2, 5]} intensity={1} />
+  <OrbitControls
+    enableZoom={false}
+    enableRotate={false}
+    enablePan={false}
+    target={[0, 1, 0]} // Look slightly downward
+  />
+  <Suspense fallback={null}>
+    {modelPaths.map((path, i) => (
+      <Model
+        key={path}
+        path={path}
+        isActive={i === index}
+        onEnd={nextModel}
+      />
+    ))}
+  </Suspense>
+</Canvas>
 
-        <AnimatedModel
-          key={animationKey}
-          modelPath={modelPath}
-          onAnimationEnd={onAnimationEnd}
-        />
+      <div
+        style={{
+          position: "absolute",
+          top: 5,
+          left: 5,
+          marginBottom:20,
+          color: 'white',
+          background: "rgba(0, 0, 0, 0.2)",
+          padding: "8px 12px",
+          borderRadius: "8px",
+          fontfamily: 'Orbitron', 
+          fontWeight:200,
+          fontSize: "16px",
+          boxShadow: "0 -2px 10px rgba(0, 240, 255, 0.2)", // neon glow
+        }}
+      >
+        <p>
+        The BattleField is calling your warrior team! Grind and Earn by defeating other teams!</p>
+      </div>
+      <div
+        style={{
+          position: "relative",
+          bottom: 0,
+          width: "100%",
+          padding: "15px 0",
+          textAlign: "center",
+          color: "black",
+          fontFamily: "Orbitron",
+          fontSize: "12px",
+          textShadow: "0 0 3px #00f0ff, 0 0 7px #00f0ff", // Neon glow text
+          
+          zIndex: 1000,
+        }}
+      >
+        <hr/>
+        © 2025 The BattleField — All Rights Reserved
+      </div>
 
-        <OrbitControls enableZoom={false} enableRotate={false} enablePan={false} />
-      </Canvas>
     </div>
+    
   );
 }
