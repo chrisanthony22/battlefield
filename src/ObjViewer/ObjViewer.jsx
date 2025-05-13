@@ -35,7 +35,7 @@ function Model({ path, isActive, onEnd }) {
       ref={group}
       object={scene}
       scale={2}
-      position={[0, -1, 0]}
+      position={[0, -0.4, 0]}
       dispose={null}
     />
   ) : null;
@@ -83,8 +83,8 @@ export default function ObjViewer() {
       <div
         style={{
           position: "absolute",
-          top: 5,
-          left: 5,
+          top: 3,
+          left: 3,
           marginBottom:20,
           color: 'white',
           background: "rgba(0, 0, 0, 0.2)",
