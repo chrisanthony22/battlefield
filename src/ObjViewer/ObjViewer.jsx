@@ -97,7 +97,7 @@ export default function ObjViewer() {
         }}
       >
         <p>
-        The BattleField is calling your warrior team! Grind and Earn by defeating other teams!</p>
+        Enter the battlefield. Win. Earn. Repeat. Your legend begins now!</p>
       </div>
       <div
         style={{

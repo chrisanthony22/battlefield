@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const handleLinkClick = () => setIsOpen(false); // closes menu on link click
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <nav className="navbar">
       <div className="logo tron">The BattleField</div>
       <div className={`menu ${isOpen ? 'open' : ''}`}>
-        <a href="#" onClick={handleLinkClick}>Home</a>
-        <a href="#" onClick={handleLinkClick}>Game Dashboard</a>
-        <a href="#" onClick={handleLinkClick}>About</a>
-        <a href="#" onClick={handleLinkClick}>Rules</a>
-        <a href="#" onClick={handleLinkClick}>Chat Moderator</a>
+        <Link to="/" onClick={handleLinkClick}>Home</Link>
+        <Link to="/dashboard" onClick={handleLinkClick}>Game Dashboard</Link>
+        <Link to="/about" onClick={handleLinkClick}>About</Link>
+        <Link to="/rules" onClick={handleLinkClick}>Rules</Link>
+        <Link to="/moderator" onClick={handleLinkClick}>Chat Moderator</Link>
+        <Link to="/register" onClick={handleLinkClick}>Register</Link> {/* 👈 New link */}
       </div>
       <div className="burger" onClick={toggleMenu}>
         <div className="line" />
