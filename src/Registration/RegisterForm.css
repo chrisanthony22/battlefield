@@ -56,8 +56,15 @@ button {
 }
 
 @media (max-width: 768px) {
-  .left-pane,
+  
   .right-pane {
     flex: 1 1 100%;
   }
+  .left-pane{
+    margin-top: -40px;
+  }
+  .register-container {
+    justify-content: center;
+    padding: 10px;
+    }
 }
