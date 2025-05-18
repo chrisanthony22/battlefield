@@ -31,6 +31,14 @@ function RegisterForm() {
     <div className="register-container">
       <div className="left-pane">
         <h2>Register Your Team Now!</h2>
+        <hr
+  style={{
+    borderColor: "white",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    boxShadow: "0 0 5px #00f0ff, 0 0 10px #00f0ff"
+  }}
+/>
         <div className="textCont">
             <p style={{ fontSize: '18px' }}>
             Your team's login credentials will be used for all transactions, game registration, 

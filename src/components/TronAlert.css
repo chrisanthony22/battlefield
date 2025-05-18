@@ -1,0 +1,29 @@
+.tron-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #0d0d0d;
+  padding: 15px 25px;
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 6px #00ffff, 0 0 12px #00ffff;
+  box-shadow: 0 0 8px #00ffff, inset 0 0 10px #00ffff;
+  border-radius: 5px;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+.tron-alert.error {
+  border-color: #ff0000;
+  color: #ff0000;
+  text-shadow: 0 0 6px #ff0000, 0 0 12px #ff0000;
+  box-shadow: 0 0 8px #ff0000, inset 0 0 10px #ff0000;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
