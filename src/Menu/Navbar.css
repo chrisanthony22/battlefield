@@ -4,7 +4,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: right;
+  align-items: center;
   background: #25292E;
   padding: 10px 20px;
   position: relative;
@@ -21,7 +21,8 @@
 .menu {
   display: flex;
   gap: 20px;
-  align-items: right;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .menu a {
@@ -42,7 +43,7 @@
   position: relative;
   cursor: pointer;
   display: inline-flex;
-  align-items: right;
+  align-items: center;
   gap: 5px;
   padding: 0px 0px;
   color: #ff8000;
@@ -59,7 +60,6 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
   margin-top: 15px;
   background-color: #111;
   border: 1px solid #ff8000;
@@ -69,11 +69,18 @@
   flex-direction: column;
   padding: 10px;
   min-width: 150px;
+  right: auto;
+  left: 0;
+}
+
+.dropdown-left {
+  left: 0;
+  right: auto;
 }
 
 .dropdown-right {
-  left: auto;
   right: 0;
+  left: auto;
 }
 
 .dropdown-menu a,
@@ -116,12 +123,12 @@
     top: 60px;
     left: 0;
     right: 0;
-    background-color: rgba(21, 27, 35, 0.9);
+    background-color: rgba(21, 27, 35, 0.95);
     flex-direction: column;
     display: none;
     padding: 10px 0;
     z-index: 9999;
-    align-items: right;
+    align-items: flex-end;
   }
 
   .menu.open {
@@ -133,7 +140,7 @@
   }
 
   .user-dropdown {
-    justify-content: right;
+    justify-content: flex-end;
     width: 100%;
     text-align: right;
     margin-right: 10px !important;
