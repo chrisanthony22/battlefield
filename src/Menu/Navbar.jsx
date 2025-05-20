@@ -70,6 +70,7 @@ const Navbar = () => {
         <Link to="/rules" onClick={closeAllMenus}>Rules</Link>
         <Link to="/moderator" onClick={closeAllMenus}>Chat Moderator</Link>
         <Link to="/register" onClick={closeAllMenus}>Register</Link>
+        <Link to="/chat" onClick={closeAllMenus}>Chats</Link>
 
         {loggedInUser && (
           <div

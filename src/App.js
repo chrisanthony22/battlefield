@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Menu/Navbar';
 import ObjViewer from './ObjViewer/ObjViewer';
 import RegisterForm from './Registration/RegisterForm'; // adjust path as needed
-
+import ChatListPage from './components/ChatListPage';
 function App() {
   return (
     <Router>
@@ -13,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ObjViewer />} />
             <Route path="/register" element={<RegisterForm />} />
+            <Route path="/chat" element={<ChatListPage />} />
           </Routes>
         </div>
       </div>
