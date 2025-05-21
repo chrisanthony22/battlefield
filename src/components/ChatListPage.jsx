@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { db, ref } from "../firebase/firebase";
 import { onValue, push, set } from "firebase/database";
 import "./ChatListPage.css";
+import { FaUser } from 'react-icons/fa';
 
 const MODERATOR_TEAMNAME = "d'moderator";
 
@@ -140,16 +141,31 @@ function ChatListPage() {
       (p) => p !== loggedInUser.teamname
     );
     const lastMsgText = conv.lastMessage?.text || "";
-
+    const lastTime = conv.lastMessage?.timestamp 
+  ? new Date(conv.lastMessage.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
+  : "";
     return (
       <div
         key={conv.id}
         onClick={() => onSelectConversation(conv)}
         className={`conversation-item ${activeConversation?.id === conv.id ? "active" : ""}`}
       >
-        <strong className="conversation-name">{otherParticipants.join(", ")}</strong>
-        <span className="conversation-last-message">{lastMsgText}</span>
+        {/* Left side: icon + name/message */}
+        <div style={{ display: "flex"}}>
+          <FaUser className="conversation-avatar" />
+          <div style={{ display: "flex", flexDirection: "column", wordBreak: "break-word" }}>
+            <strong style={{ marginBottom: "4px" }}>{otherParticipants.join(", ")}</strong>
+            <span>{lastMsgText}</span>
+          </div>
+        </div>
+
+        {/* Right side: timestamp */}
+        <div style={{ marginLeft: "10px", fontSize: "0.75rem", whiteSpace: "nowrap" }}>
+          {lastTime}
+        </div>
       </div>
+
+
     );
   };
 
@@ -159,7 +175,7 @@ function ChatListPage() {
     <div className={`chat-container ${isMobile ? "mobile" : "desktop"}`}>
       {(!isMobile || (isMobile && !showMessagesMobile)) && (
         <div className="conversations-pane">
-          <h3>Chats</h3>
+          <h2 style={{color:"white"}}>Chats</h2>
           {conversations.length === 0 ? (
             <p>No conversations</p>
           ) : (
@@ -190,6 +206,7 @@ function ChatListPage() {
                 className={`message-wrapper ${msg.sender === loggedInUser.teamname ? "sent" : "received"}`}
               >
                 <div className={`message-item ${msg.sender === loggedInUser.teamname ? "sent" : "received"}`}>
+                  <div className="message-sender">{msg.sender}</div>
                   <div className="message-text">{msg.text}</div>
                   <div className="message-timestamp">{formatTimestamp(msg.timestamp)}</div>
                 </div>
@@ -208,7 +225,7 @@ function ChatListPage() {
                 if (e.key === "Enter") handleSendMessage();
               }}
             />
-            <button onClick={handleSendMessage} disabled={!newMessage.trim()}>
+            <button id="sendBtn" onClick={handleSendMessage} disabled={!newMessage.trim()}>
               Send
             </button>
           </div>
