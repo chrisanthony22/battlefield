@@ -133,6 +133,7 @@
 
   .menu.open {
     display: flex;
+    padding-right: 25px;
   }
 
   .burger {

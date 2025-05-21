@@ -270,12 +270,12 @@ function ChatListPage() {
             </button>
           )}
 
-          <h3 className="messages-header">
+          <div className="messages-header">
             Chat with{" "}
             {Object.keys(activeConversation.participants)
               .filter((p) => p !== loggedInUser.teamname)
               .join(", ")}
-          </h3>
+          </div>
 
           <div className="messages-list">
             {messages.map((msg) => (

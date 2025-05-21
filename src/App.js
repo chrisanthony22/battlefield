@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div style={{ padding: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ padding: '15px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ background: "#0D1117", width: "100vw" }}>
           <Routes>
             <Route path="/" element={<ObjViewer />} />
