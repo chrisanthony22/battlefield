@@ -70,7 +70,7 @@ function LoginForm() {
           onChange={handleChange}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit" style={{marginBottom:"30px"}}>Login</button>
       </form>
     </div>
   );

@@ -88,9 +88,10 @@ html, body, #root {
   }
 
   .form-section {
-    width: 90%;
+    width: 95%;
     height: auto;
-    padding: 1.5rem;
+    padding: 5px;
+    margin-top: -80px;
   }
 }
 
