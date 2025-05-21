@@ -3,6 +3,7 @@ import { db, ref } from "../firebase/firebase";
 import { get, child } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import TronAlert from "../components/TronAlert";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const [credentials, setCredentials] = useState({ teamname: "", password: "" });
@@ -70,7 +71,10 @@ function LoginForm() {
           onChange={handleChange}
           required
         />
-        <button type="submit" style={{marginBottom:"30px"}}>Login</button>
+        <button type="submit" style={{marginBottom:"10px",marginTop:"10px"}}>Login</button>
+        <p style={{ color: "white",marginBottom:"20px" }}>
+                No Account yet? Register your team  <Link to="/register" style={{ color: "#00f", textDecoration: "underline" }}>here</Link>.
+        </p>
       </form>
     </div>
   );

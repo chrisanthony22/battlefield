@@ -5,6 +5,7 @@ import "./ChatListPage.css";
 import { FaUser,FaCamera } from "react-icons/fa";
 import {  } from "react-icons/fa";
 import { FaImage } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MODERATOR_TEAMNAME = "d'moderator";
 
@@ -240,7 +241,13 @@ function ChatListPage() {
     );
   };
 
-  if (!loggedInUser) return <p style={{ color: "white" }}>Please log in first.</p>;
+  if (!loggedInUser) {
+    return (
+      <p style={{ color: "white" }}>
+        Please <Link to="/" style={{ color: "#00f", textDecoration: "underline" }}>log in</Link> first to enable chatting.
+      </p>
+    );
+  }
 
   return (
     <div className={`chat-container ${isMobile ? "mobile" : "desktop"}`}>
