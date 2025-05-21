@@ -185,6 +185,13 @@ function ChatListPage() {
     });
   };
 
+  const truncateFilename = (name) => {
+    if (name.length > 20) {
+      return name.substring(0, 20) + "...";
+    }
+    return name;
+  };
+
   const renderConversationItem = (conv) => {
     const otherParticipants = Object.keys(conv.participants).filter(
       (p) => p !== loggedInUser.teamname
@@ -336,8 +343,8 @@ function ChatListPage() {
           </div>
           {imageFile && (
             <div className="image-preview">
-              <span className="image-name">
-                <FaImage style={{ marginLeft: 6, color: "#555",width:"40px", height:"40px" }} />{imageFile.name}
+              <span className="image-name" style={{color:"white"}}>
+                <FaImage style={{ marginLeft: 6, color: "#555",width:"40px", height:"40px" }} />{truncateFilename(imageFile.name)}
               </span>
               <button className="remove-image" onClick={() => setImageFile(null)}>
                 &times;
@@ -358,7 +365,7 @@ function ChatListPage() {
             </button>
         </div>
       )}
-
+      
       {previewImage && (
         <div
           className="image-modal"
