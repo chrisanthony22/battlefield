@@ -234,11 +234,62 @@
 
 #sendBtn{
   padding: 5px;
-  height: 40px;
+  height: 35px;
+  width: 50%;
   background-color: #0056b3;
-  box-shadow: 0 0 1px #ff8000, 0 0 6px #ff8000, 0 0 11px #ff5500;
+  
 }
 
 .message-field{
   box-shadow: 0 0 1px #00f0ff, 0 0 9px #00f0ff;
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.send-message-form label:hover svg {
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 8px;
+}
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.upload-icon {
+  cursor: pointer;
+}
+.send-button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .send-message-form {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .send-button {
+    width: auto;
+  }
+}
+.image-preview, .image-name {
+  display: flex;
+  align-items: center;
+  color: #333;
+  gap: 5px;
+  margin-bottom: 5px;
 }
