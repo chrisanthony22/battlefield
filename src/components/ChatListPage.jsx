@@ -169,7 +169,7 @@ function ChatListPage() {
     );
   };
 
-  if (!loggedInUser) return <p>Please log in first.</p>;
+  if (!loggedInUser) return <p style={{color:"white"}}>Please log in first.</p>;
 
   return (
     <div className={`chat-container ${isMobile ? "mobile" : "desktop"}`}>
