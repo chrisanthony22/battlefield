@@ -216,7 +216,7 @@ function ChatListPage() {
           </div>
 
           <div className="send-message-form">
-            <input
+            <input className="message-field"
               type="text"
               placeholder="Type your message..."
               value={newMessage}

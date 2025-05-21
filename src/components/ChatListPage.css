@@ -235,4 +235,10 @@
 #sendBtn{
   padding: 5px;
   height: 40px;
+  background-color: #0056b3;
+  box-shadow: 0 0 1px #ff8000, 0 0 6px #ff8000, 0 0 11px #ff5500;
+}
+
+.message-field{
+  box-shadow: 0 0 1px #00f0ff, 0 0 9px #00f0ff;
 }
