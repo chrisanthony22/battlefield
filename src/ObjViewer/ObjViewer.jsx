@@ -101,7 +101,7 @@ export default function ObjViewer() {
         justifyContent: 'flex-start',
         gap: '1rem', // optional spacing
       }}>
-        <div>
+        <div className="installDiv">
           <InstallPrompt />
         </div>
         <div className="form-section" style={{ width: '100%' }}>
