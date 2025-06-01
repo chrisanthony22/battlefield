@@ -71,6 +71,7 @@ const Navbar = () => {
         <Link to="/moderator" onClick={closeAllMenus}>Chat Moderator</Link>
         <Link to="/register" onClick={closeAllMenus}>Register</Link>
         <Link to="/chat" onClick={closeAllMenus}>Chats</Link>
+        <Link to="/teams" onClick={closeAllMenus}>Registered Teams</Link>
 
         {loggedInUser && (
           <div

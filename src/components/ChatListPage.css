@@ -6,6 +6,7 @@
   flex-direction: row;
 }
 
+
 .chat-container.mobile {
   flex-direction: column;
 }
@@ -87,7 +88,7 @@
   flex-direction: column;
   padding: 10px;
   box-sizing: border-box;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
 }
 

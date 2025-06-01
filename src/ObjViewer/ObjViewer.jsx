@@ -4,6 +4,7 @@ import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 import './ObjViewer.css';
 import LoginForm from "../LoginForm/LoginForm";
+import InstallPrompt from "../InstallPrompt";
 
 function Model({ path, isActive, onEnd }) {
   const group = useRef();
@@ -77,6 +78,7 @@ export default function ObjViewer() {
 
   return (
     <div className="battle-container">
+      
       <div className="canvas-section">
         <Canvas camera={{ position: [0, 2, 6], fov: 60 }}>
           <ambientLight intensity={0.7} />
@@ -92,9 +94,21 @@ export default function ObjViewer() {
           Enter the battlefield. Win. Earn. Repeat. Your legend begins now!
         </div>
       </div>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        gap: '1rem', // optional spacing
+      }}>
+        <div>
+          <InstallPrompt />
+        </div>
+        <div className="form-section" style={{ width: '100%' }}>
+          {loggedInUser ? <NewsPage /> : <LoginForm />}
+        </div>
 
-      <div className="form-section">
-        {loggedInUser ? <NewsPage /> : <LoginForm />}
+        
       </div>
     </div>
   );

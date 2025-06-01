@@ -2,15 +2,20 @@
 
 /* Base styles */
 .navbar {
+  position: fixed;           /* Make it stay at the top */
+  top: 0;                    /* Pin to top */
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #25292E;
-  padding: 10px 20px;
-  position: relative;
+  padding: 0px 20px;
   color: white;
   z-index: 1000;
+  height: 40px;              /* Optional: fix consistent height */
 }
+
 
 .logo {
   font-size: 1.5rem;
