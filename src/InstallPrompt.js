@@ -18,10 +18,15 @@ const InstallPrompt = () => {
       const { outcome } = await deferredPrompt.userChoice;
       console.log(outcome === 'accepted' ? '✅ Installed' : '❌ Cancelled');
       setDeferredPrompt(null);
+    } else {
+      // fallback message for unsupported browsers (e.g., iOS Safari)
+      alert(
+        "Installation not supported automatically.\n\n" +
+        "On iOS: tap the Share button and choose 'Add to Home Screen'.\n" +
+        "On Android Chrome: use the browser menu and choose 'Add to Home screen'."
+      );
     }
   };
-
-  if (!deferredPrompt) return null;
 
   return (
     <div style={{ textAlign: 'center', margin: '10px' }}>
