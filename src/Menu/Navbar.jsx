@@ -8,6 +8,8 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState('left');
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [popupOpen, setPopupOpen] = useState(false); // Popup state
+
   const navigate = useNavigate();
   const userDropdownRef = useRef(null);
 
@@ -32,7 +34,7 @@ const Navbar = () => {
 
   const closeAllMenus = () => {
     closeDropdown();
-    setIsOpen(false); // closes mobile burger menu if needed
+    setIsOpen(false);
   };
 
   const handleLogout = () => {
@@ -59,9 +61,32 @@ const Navbar = () => {
     };
   }, []);
 
+  // Popup handlers
+  const openPopup = () => setPopupOpen(true);
+  const closePopup = () => setPopupOpen(false);
+
   return (
     <nav className="navbar">
-      <div className="logo tron">The BattleField</div>
+      <div 
+        className="logo tron" 
+        style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+        onClick={openPopup}
+      >
+        <img
+          src="/ares64.png"
+          alt="Ares Icon"
+          style={{
+            width: '30px',
+            height: '30px',
+            marginRight: '8px',
+            backgroundColor: 'black',
+            padding: '2px',
+            borderRadius: '20px',
+            filter: 'drop-shadow(0 0 3px #ff8000) drop-shadow(0 0 6px #ff5500)'
+          }}
+        />
+        The BattleField
+      </div>
 
       <div className={`menu ${isOpen ? 'open' : ''}`}>
         <Link to="/" onClick={closeAllMenus}>Home</Link>
@@ -97,6 +122,55 @@ const Navbar = () => {
         <div className="line" />
         <div className="line" />
       </div>
+
+      {popupOpen && (
+        <div
+          onClick={closePopup}
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 9999,
+            cursor: 'pointer',
+            color: '#ff8000',
+            fontFamily: "'Orbitron', sans-serif",  // example neon/tron style font, change as needed
+            textShadow: '0 0 5px #ff8000, 0 0 10px #ff5500',
+            userSelect: 'none',
+            padding: '20px',
+          }}
+        >
+          <img
+            src="/ares128.png"
+            alt="Ares Large Icon"
+            style={{
+              width: '128px',
+              height: '128px',
+              backgroundColor: 'black',
+              padding: '10px',
+              borderRadius: '30px',
+              filter: 'drop-shadow(0 0 8px #ff8000) drop-shadow(0 0 12px #ff5500)',
+              cursor: 'default',
+            }}
+            onClick={e => e.stopPropagation()}
+          />
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              marginTop: '0px',
+              fontSize: '24px',
+              fontWeight: 'bold',
+              letterSpacing: '2px',
+            }}
+          >
+            <h3 className='logo tron'>The BattleField</h3>
+          </div>
+        </div>
+      )}
+
     </nav>
   );
 };
