@@ -6,6 +6,7 @@ import RegisterForm from './Registration/RegisterForm';
 import ChatListPage from './components/ChatListPage';
 import TeamsList from './components/TeamsList';
 import AboutPage from './components/AboutPage';
+import GameRules from './components/GameRules';
 import InstallPrompt from './InstallPrompt'; // 👈 Import here
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/chat" element={<ChatListPage />} />
             <Route path="/teams" element={<TeamsList />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/rules" element={<GameRules />} />
           </Routes>
         </div>
       </div>

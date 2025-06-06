@@ -2,7 +2,6 @@
 .about-hero-bg {
   background: radial-gradient(circle at center, #1b1d22 0%, #111318 100%);
   min-height: 100vh;
-  padding-top: 60px;
   font-family: 'Share Tech Mono', monospace;
 }
 
@@ -10,7 +9,7 @@
 .about-container {
   max-width: 1000px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 40px 10px;
   color: white;
 }
 
@@ -18,23 +17,23 @@
 .arena-title-box {
   background-color: #10141a;
   padding: 0px;
-  margin-top: -45px;
+  margin-top: -65px;
   border-radius: 10px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   box-shadow:
     0 0 15px #00f0ff,
     0 0 30px #0088ff,
     inset 0 0 10px #00f0ff;
-  border: 1px solid #0adae933;
   animation: pulseBlue 3s ease-in-out infinite;
 }
 
 .about-title {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #00f0ff;
 }
 
+/* Glowing animation */
 @keyframes pulseBlue {
   0%, 100% {
     box-shadow: 0 0 15px #00f0ff, 0 0 30px #0088ff, inset 0 0 10px #00f0ff;
@@ -47,9 +46,9 @@
 /* Intro text */
 .about-intro {
   text-align: center;
-  font-size: 1.3rem;
-  margin-bottom: 50px;
-  line-height: 1.8;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1;
 }
 
 .highlight {
@@ -62,18 +61,18 @@
 }
 
 .about-section h2 {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: #ff8000;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
 .about-section p {
   font-size: 1.1rem;
-  line-height: 1.7;
+  line-height: 1;
   color: #ddd;
 }
 
-/* Icon List */
+/* Icon List (not used yet but available) */
 .about-list {
   list-style: none;
   padding-left: 0;
@@ -104,17 +103,18 @@
 }
 
 .about-cta {
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #ff8000;
   margin: 0;
 }
 
-
+/* Mobile responsiveness */
 @media only screen and (max-width: 600px) {
-  .about-title{
+  .about-title {
     font-size: 25px !important;
   }
-  .arena-title-box{
+
+  .arena-title-box {
     margin-top: -30px;
   }
 }
