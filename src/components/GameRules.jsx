@@ -1,5 +1,6 @@
 import React from 'react';
 import './GameRules.css'; // Make sure your CSS is saved here
+import { Link } from "react-router-dom";
 
 const GameRules = () => {
   return (
@@ -79,7 +80,9 @@ const GameRules = () => {
             Maaaring matanggap ang panalo sa loob ng 10 minuto hanggang 2 oras.
             </p>
         </div>
-
+        <p style={{ color: "white" }}>
+            For questions, comments and suggesstions please message <Link to="/moderator" style={{ color: "#00f", textDecoration: "underline" }}>d'moderator</Link>.
+        </p>
         <div className="cta-box-red">
           <p className="about-cta">
             Always play fair and respect your opponents. / Laging maglaro ng patas at igalang ang kalaban.
