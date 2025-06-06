@@ -5,6 +5,7 @@ import ObjViewer from './ObjViewer/ObjViewer';
 import RegisterForm from './Registration/RegisterForm';
 import ChatListPage from './components/ChatListPage';
 import TeamsList from './components/TeamsList';
+import AboutPage from './components/AboutPage';
 import InstallPrompt from './InstallPrompt'; // 👈 Import here
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/chat" element={<ChatListPage />} />
             <Route path="/teams" element={<TeamsList />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </div>
       </div>
